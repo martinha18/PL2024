@@ -2,7 +2,7 @@ import sys
 import re
 
 def headers(linha):
-    correspondencia = re.match(r"#+ ",linha)
+    correspondencia = re.match(r" *#+ ",linha)
     if correspondencia is not None:
         _, carateres = correspondencia.span()
         linha_html = f"<h{carateres-1}>{linha[carateres:]}</h{carateres-1}>"
@@ -87,10 +87,26 @@ def imagens(linha):
 def links(linha):
     return re.sub(r"\[(.+)\] *\((.+)\)", lambda match: f"<a href=\"{match.group(2)}\">{match.group(1)}</a>",linha)
 
-#ordered_list = False
+ordered_list = False
 
 def listas(linha):
-    pass
+    global ordered_list
+    correspondencia = re.match(r" *\d+\. ",linha)
+    if correspondencia is not None:
+        _, carateres = correspondencia.span()
+        if ordered_list:
+            linha_html = f"\t\t<li>{linha[carateres:]}</li>\n"
+        else:
+            ordered_list = True
+            linha_html = f"\t\t<ol>\n\t\t<li>{linha[carateres:]}</li>\n"
+    else:
+        if ordered_list:
+            ordered_list = False
+            linha_html = "\t\t</ol>\n\t\t<p>" + linha + "</p>\n"
+        else:
+            linha_html = "\t\t<p>" + linha + "</p>\n"
+    return linha_html
+
 
 def main(input):
     f = open(input[1])
@@ -107,9 +123,7 @@ def main(input):
     for linha in f:
         print(linha)
         conteudo = linha.strip()    
-        html += '\t\t<p>' 
-        html += links(imagens(italico(bold(headers(conteudo)))))
-        html += '</p>\n'
+        html += listas(links(imagens(italico(bold(headers(conteudo))))))
     f.close()
 
     html += """
