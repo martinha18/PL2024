@@ -4,7 +4,7 @@ import re
 def headers(linha):
     correspondencia = re.match(r" *#+ ",linha)
     if correspondencia is not None:
-        _, carateres = correspondencia.span()
+        carateres = correspondencia.end()
         linha_html = f"<h{carateres-1}>{linha[carateres:]}</h{carateres-1}>"
     else:
         linha_html = linha
@@ -16,10 +16,10 @@ def inicio_fim_html(valor, texto):
     return expressao
 
 def bold(linha):
-    return re.sub(r"\*\*(.+)\*\*", lambda match:inicio_fim_html('b', match.group(1)),linha)
+    return re.sub(r"\*\*(.+?)\*\*", lambda match:inicio_fim_html('b', match.group(1)),linha)
 
 def italico(linha):
-    return re.sub(r"\*(.+)\*", lambda match:inicio_fim_html('i', match.group(1)),linha)
+    return re.sub(r"\*(.+?)\*", lambda match:inicio_fim_html('i', match.group(1)),linha)
 
 #def imagens(linha):
 #    numero = len(re.findall(r"!\[",linha))
@@ -82,10 +82,10 @@ def italico(linha):
 #    return r
 
 def imagens(linha):
-    return re.sub(r"!\[(.+)\] *\((.+)\)", lambda match: f"<img src=\"{match.group(2)}\" alt=\"{match.group(1)}\"/>",linha)
+    return re.sub(r"!\[(.+?)\] *\((.+?)\)", lambda match: f"<img src=\"{match.group(2)}\" alt=\"{match.group(1)}\"/>",linha)
 
 def links(linha):
-    return re.sub(r"\[(.+)\] *\((.+)\)", lambda match: f"<a href=\"{match.group(2)}\">{match.group(1)}</a>",linha)
+    return re.sub(r"\[(.+?)\] *\((.+?)\)", lambda match: f"<a href=\"{match.group(2)}\">{match.group(1)}</a>",linha)
 
 ordered_list = False
 
@@ -95,10 +95,10 @@ def listas(linha):
     if correspondencia is not None:
         _, carateres = correspondencia.span()
         if ordered_list:
-            linha_html = f"\t\t<li>{linha[carateres:]}</li>\n"
+            linha_html = f"\t\t\t<li>{linha[carateres:]}</li>\n"
         else:
             ordered_list = True
-            linha_html = f"\t\t<ol>\n\t\t<li>{linha[carateres:]}</li>\n"
+            linha_html = f"\t\t<ol>\n\t\t\t<li>{linha[carateres:]}</li>\n"
     else:
         if ordered_list:
             ordered_list = False
@@ -121,7 +121,6 @@ def main(input):
     <body>
     """
     for linha in f:
-        print(linha)
         conteudo = linha.strip()    
         html += listas(links(imagens(italico(bold(headers(conteudo))))))
     f.close()
