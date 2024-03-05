@@ -1,5 +1,5 @@
-# TPC4: ???
-## Data a definir
+# TPC4: Analisador léxico
+## 2024-03-01
 
 ## Autor
 
@@ -8,4 +8,6 @@
 
 ## Resumo
 
-O resumo será realizado aquando da realização do TPC
+Construção de um analisador léxico para:
+
+    Select id, nome, salario from empregados where salario>=820
