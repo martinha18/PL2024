@@ -10,4 +10,4 @@
 
 Construção de um analisador léxico para:
 
-    Select id, nome, salario from empregados where salario>=820
+    SELECT id, nome, salario FROM empregados WHERE salario>=820
