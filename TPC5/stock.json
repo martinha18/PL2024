@@ -1,0 +1,64 @@
+{
+  "stock": [
+    {
+      "cod": "A23",
+      "nome": "\u00c1gua 0.5L",
+      "quant": 8,
+      "preco": 1.0
+    },
+    {
+      "cod": "B13",
+      "nome": "Batatas Fritas",
+      "quant": 10,
+      "preco": 1.2
+    },
+    {
+      "cod": "C31",
+      "nome": "Barra de Chocolate",
+      "quant": 5,
+      "preco": 1.0
+    },
+    {
+      "cod": "D05",
+      "nome": "Refrigerante",
+      "quant": 15,
+      "preco": 1.8
+    },
+    {
+      "cod": "E18",
+      "nome": "Sandes de Frango",
+      "quant": 3,
+      "preco": 3.5
+    },
+    {
+      "cod": "F15",
+      "nome": "Sandes Vegetariana",
+      "quant": 2,
+      "preco": 3.2
+    },
+    {
+      "cod": "G02",
+      "nome": "Pacote de Bolachas",
+      "quant": 8,
+      "preco": 0.8
+    },
+    {
+      "cod": "H20",
+      "nome": "Gomas",
+      "quant": 7,
+      "preco": 1.7
+    },
+    {
+      "cod": "I12",
+      "nome": "Ma\u00e7\u00e3",
+      "quant": 12,
+      "preco": 0.3
+    },
+    {
+      "cod": "J09",
+      "nome": "Amendoins",
+      "quant": 1,
+      "preco": 0.9
+    }
+  ]
+}

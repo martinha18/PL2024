@@ -21,11 +21,15 @@ t_DELIMITER2  = r';'
 t_OPERATOR = r'(<|>|=)+'
 
 def t_NUMBER(t):
-    r'\d+'
+    r'(\+|-)?\d+'
     t.value = int(t.value)    
     return t
 
 t_ATTRIBUTE  = r'\w+'
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
 
 # A string containing ignored characters (spaces and tabs)
 t_ignore  = ' \t'
