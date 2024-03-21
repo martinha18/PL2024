@@ -31,24 +31,24 @@ Ter em conta:
 
     P = {
     
-    S -> '?' id             LA = {'?'}
-       | '!' Exp1           LA = {'!'}
-       | id '=' Exp1        LA = {id}
+        S -> '?' id             LA = {'?'}
+        | '!' Exp1              LA = {'!'}
+        | id '=' Exp1           LA = {id}
 
-    Exp1 -> Exp2 Op1        LA = {'(', num, id}
+        Exp1 -> Exp2 Op1        LA = {'(', num, id}
 
-    Op1 -> '+' Exp1         LA = {'+'}
-         | '-' Exp1         LA = {'-'}
-         | &                LA = {')', $}
+        Op1 -> '+' Exp1         LA = {'+'}
+            | '-' Exp1          LA = {'-'}
+            | &                 LA = {')', $}
 
-    Exp2 -> Exp3 Op2        LA = {'(', num, id}
+        Exp2 -> Exp3 Op2        LA = {'(', num, id}
 
-    Op2 -> '*' Exp1         LA = {'*'}
-         | '/' Exp1         LA = {'/'}
-         | &                LA = {'+', '-', ')', $}
+        Op2 -> '*' Exp1         LA = {'*'}
+            | '/' Exp1          LA = {'/'}
+            | &                 LA = {'+', '-', ')', $}
 
-    Exp3 -> '(' Exp1 ')'    LA = {'('}
-          | num             LA = {num}
-          | id              LA = {id}
+        Exp3 -> '(' Exp1 ')'    LA = {'('}
+            | num               LA = {num}
+            | id                LA = {id}
 
     }
