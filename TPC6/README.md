@@ -8,7 +8,7 @@
 
 ## Resumo
 
-Exemplo da linguagem:
+Elaboração de uma gramática independente de contexto para a seguinte linguagem:
 
     ?a
     b=a*2/(27-3)
@@ -43,8 +43,8 @@ Ter em conta:
 
         Exp2 -> Exp3 Op2        LA = {'(', num, id}
 
-        Op2 -> '*' Exp1         LA = {'*'}
-            | '/' Exp1          LA = {'/'}
+        Op2 -> '*' Exp2         LA = {'*'}
+            | '/' Exp2          LA = {'/'}
             | &                 LA = {'+', '-', ')', $}
 
         Exp3 -> '(' Exp1 ')'    LA = {'('}
