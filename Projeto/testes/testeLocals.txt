@@ -1,0 +1,115 @@
+: ola 
+    LOCALS| a b |
+    2 to a
+    2 to b
+    a b * ;
+    
+VARiable global1
+12 global1 !
+." A imprimir o primeiro global1 - "
+global1 @ . CR
+." Agora decidi mudar o valor do global1 - "
+15 global1 !
+global1 @ . CR
+
+: varsLocais 
+    LOCALS|global1 b |
+    3 4 ola TO b
+    ." A imprimir b ... " b . CR
+    ." A definir uma variavel local com o mesmo nome que uma global " CR
+    22 TO global1
+    ." A imprimir a variavel local global1: " global1 . CR
+    ;
+
+2 5 6 varsLocais 
+." Qual o valor do global1 que fica??" global1 @ . CR
+
+: AVERAGE ( a b -- avg ) + 2/ ;
+
+10 20 AVERAGE
+." Vou imprimir a média de 10 + 20 "
+. CR
+
+." Imprimir o CHAR W: "
+CHAR W .
+ 
+CR
+ 
+." Imprimir CHAR % DUP . EMIT: " 
+CHAR % DUP . EMIT
+ 
+CR
+ 
+." Imprimir CHAR a DUP: "
+CHAR a DUP .
+ 
+CR
+ 
+." 32 + EMIT: "
+32 + EMIT 
+ 
+CR 
+
+: TOFU ." Yummy bean curd!" ;
+TOFU
+
+: SPROUTS ." Miniature vegetables." ;
+: MENU
+ CR TOFU CR SPROUTS CR
+;
+MENU
+
+
+22 VALUE  thirteen
+
+-23 to thirteen
+
+." Imprimir a variável thirteen " thirteen  .
+
+Cr
+
+: maior2 2dup > if swap . ." é o maior " else . ." é o maior " then ;
+-77 -5 maior2
+
+CR
+
+." O maior de 3 números é: "
+
+: maior3 maior2 maior2 . ;
+2 11 99 maior3 CR
+
+: ola2 
+	3 1 + ;
+ 
+: funcao
+	LOCALS| ola6 |
+	." Vou imprimir o valor de ola2: "
+	ola2 . CR
+	." O valor da multiplicação de ola2 por ola6 é: "
+	ola2 ola6 * . CR
+	13 VALUE teste
+	." O valor do teste dentro da função é: " teste . CR
+	VARIABLE x
+	-49 x !
+	." O valor de x dentro da função é: "
+	 x @ .
+	 CR
+	;
+ 
+ 
+3 funcao
+ 
+22 x !
+
+." O valor de x fora da função é: "
+	 x @ . CR
+
+-98 tO teste
+
+." O valor do teste fora da função é: " teste . CR
+
+: SUM-OF-SQUARES   ( a b -- a*a+b*b )   DUP *   SWAP   DUP *  +  ;
+
+." A soma dos quadrados é: " 
+
+2 3 SUM-OF-SQUARES . 

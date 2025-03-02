@@ -1,0 +1,59 @@
+1 if ." trueee" 0 if ." true" else ." false" then then 2 .
+CR
+CR
+
+: FULL  12 = IF  ." It's full "  THEN ;
+11 FULL
+CR
+12 FULL
+CR
+CR
+
+: TOO-HOT  220 > IF ." Danger -- reduce heat " THEN ;
+290 TOO-HOT
+CR
+130 TOO-HOT
+CR
+CR
+
+\ : DAY  32 < IF  ." Looks good " ELSE  ." no way " THEN ;
+: DAY  DUP 1 <  SWAP 31 > +        IF ." No way " ELSE ." Looks good " THEN ;
+35 DAY
+CR
+25 DAY
+CR
+CR
+
+\ : CHECK   DUP 0= IF  ." invalid " DROP  ELSE  /  THEN ;
+: CHECK  DUP IF  /  ELSE  ." invalid " DROP  THEN ;
+12 0 CHECK
+CR
+12 3 CHECK
+CR
+CR
+
+: EGGSIZE ( n -- )
+   DUP 18 < IF  ." reject "      ELSE
+   DUP 21 < IF  ." small "       ELSE
+   DUP 24 < IF  ." medium "      ELSE
+   DUP 27 < IF  ." large "       ELSE
+   DUP 30 < IF  ." extra large " ELSE
+      ." error "
+   THEN THEN THEN THEN THEN DROP ;
+23 EGGSIZE
+CR
+29 EGGSIZE
+CR
+40 EGGSIZE
+CR
+CR
+
+: TEST  IF ." non-" THEN ." zero " ;
+0 TEST
+CR
+1 TEST
+CR
+-400 TEST
+CR
+CR
+
